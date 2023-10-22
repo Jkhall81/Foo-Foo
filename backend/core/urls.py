@@ -36,9 +36,7 @@ urlpatterns = [
          cache_timeout=0), name='schema-redoc'),
 
     path('admin/', admin.site.urls),
-    path('', include('apps.user.urls')),
-    path('', include('apps.comment.urls')),
-    path('', include('apps.post.urls')),
+    path('', include('accounts.urls')),
 
     # Login
     path('login/', LoginView.as_view(), name='login'),
