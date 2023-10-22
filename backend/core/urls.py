@@ -4,13 +4,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 # Login
-from apps.user.views import LoginView
+from accounts.views import LoginView
 
-# SimpleJWT
-from rest_framework_simplejwt.views import (
-    TokenVerifyView,
-    TokenRefreshView,
-)
 
 # Swagger
 from django.urls import re_path
@@ -45,10 +40,6 @@ urlpatterns = [
     path('', include('apps.comment.urls')),
     path('', include('apps.post.urls')),
 
-    # SimpleJwt
-    path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('verify/', TokenVerifyView.as_view(), name='token_verify'),
-
     # Login
     path('login/', LoginView.as_view(), name='login'),
 
@@ -56,7 +47,7 @@ urlpatterns = [
 #     path('', include('apps.user.routers')),
 #     path('', include('apps.post.routers')),
 #     path('', include('apps.comment.routers')),
-# ]
+]
 
 
 if settings.DEBUG:

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,10 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'rest_framework_simplejwt',
     'drf_yasg',
-    'rest_framework_simplejwt.token_blacklist',
-    'apps.user',
+    
+
 
 ]
 
@@ -146,21 +145,3 @@ CORS_ALLOWED_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
 ]
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKEN': True,
-    'BLACKLIST_AFTER_ROTATION': True,
-}
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permission.IsAuthenticated',
-    ]
-}
-
-AUTH_USER_MODEL = 'user.User'
